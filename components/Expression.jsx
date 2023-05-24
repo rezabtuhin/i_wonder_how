@@ -20,38 +20,38 @@ const Expression = () => {
         
     // </div>
 
-    <div class="flex flex-wrap -mx-4">
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Infix to Postfix</div>
-                    <p class="text-gray-700 text-base">Convert infix expression into postfix expression</p>
+    <div className="flex flex-wrap -mx-4">
+        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
+                <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">Infix to Postfix</div>
+                    <p className="text-gray-700 text-base">Convert infix expression into postfix expression</p>
                 </div>
             </div>
         </div>
 
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Infix to Prefix</div>
-                    <p class="text-gray-700 text-base">Convert infix expression into prefix expression</p>
+        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
+                <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">Infix to Prefix</div>
+                    <p className="text-gray-700 text-base">Convert infix expression into prefix expression</p>
                 </div>
             </div>
         </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Postfix to Infix</div>
-                    <p class="text-gray-700 text-base">Convert postfix expression into infix expression</p>
+        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
+                <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">Postfix to Infix</div>
+                    <p className="text-gray-700 text-base">Convert postfix expression into infix expression</p>
                 </div>
             </div>
         </div>
 
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Prefix to Infix</div>
-                    <p class="text-gray-700 text-base">Convert Prefix expression into infix expression</p>
+        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
+                <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">Prefix to Infix</div>
+                    <p className="text-gray-700 text-base">Convert Prefix expression into infix expression</p>
                 </div>
             </div>
         </div>
