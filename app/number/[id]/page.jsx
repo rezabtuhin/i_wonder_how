@@ -10,21 +10,55 @@ const page = () => {
   const params = useParams();
   const uid = params.id;
   let title = "";
+  const [searchText, setSearchText] = useState("");
+  const [binary, setBinary] = useState("");
+  const [decimal, setDecimal] = useState("");
+  const [octal, setOctal] = useState("");
+  const [hexa, setHexa] = useState("");
+  const [valid, setValid] = useState(true);
 
   function isBinaryNumber(str) {
     const pattern = /^[01]+(\.[01]+)?$/;
     return pattern.test(str);
   }
 
-  const [searchText, setSearchText] = useState("");
-  const [ binary, setBinary ] = useState("");
-  const [ decimal, setDecimal ] = useState("");
-  const [ octal, setOctal ] = useState("");
-  const [ hexa, setHexa ] = useState("");
-  const [valid, setValid] = useState(true);
+  function convertBinary(binaryString) {
+    if (isBinaryNumber(binaryString)) {
+      if (binaryString.includes('.')){
+        const [integerPart, fractionalPart] = binaryString.split(".");
+        const decimalInteger = parseInt(integerPart, 2);
+        const decimalFractional =
+          parseInt(fractionalPart || "0", 2) /
+          Math.pow(2, fractionalPart.length || 1);
+        const decimal = decimalInteger + decimalFractional;
+        const octal = decimal.toString(8);
+        const hexadecimal = decimal.toString(16).toUpperCase();
+        setDecimal(decimal);
+        setOctal(octal);
+        setHexa(hexadecimal);
+      }
+      else{
+        const decimal = parseInt(binaryString, 2);
+        const octal = decimal.toString(8);
+        const hexadecimal = decimal.toString(16).toUpperCase();
+        setDecimal(decimal);
+        setOctal(octal);
+        setHexa(hexadecimal);
+      }
+      
+    } else {
+      setDecimal("Invalid number format");
+      setOctal("Invalid number format");
+      setHexa("Invalid number format");
+    }
+  }
+
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchText(value);
+    if (uid === "1") {
+      convertBinary(value);
+    }
   };
   if (uid === "1") {
     title = "Binary to__";
@@ -42,7 +76,7 @@ const page = () => {
             className={`search_input peer`}
           />
         </form>
-        <Binary/>
+        <Binary prop1={octal} prop2={decimal} prop3={hexa} />
       </section>
     );
   } else if (uid === "2") {
@@ -60,7 +94,7 @@ const page = () => {
             className={"search_input peer"}
           />
         </form>
-        <Octal/>
+        <Octal prop1={binary} prop2={decimal} prop3={hexa} />
       </section>
     );
   } else if (uid === "3") {
@@ -78,7 +112,7 @@ const page = () => {
             className={"search_input peer"}
           />
         </form>
-        <Decimal/>
+        <Decimal prop1={binary} prop2={octal} prop3={hexa} />
       </section>
     );
   } else if (uid === "4") {
@@ -96,7 +130,7 @@ const page = () => {
             className={"search_input peer"}
           />
         </form>
-        <Hexa/>
+        <Hexa prop1={binary} prop2={octal} prop3={decimal} />
       </section>
     );
   } else {
