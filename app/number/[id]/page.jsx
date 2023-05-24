@@ -22,9 +22,14 @@ const page = () => {
     return pattern.test(str);
   }
 
+  function isOctalNumber(str) {
+    const octalRegex = /^[0-7]+(\.[0-7]+)?$/;
+    return octalRegex.test(str);
+  }
+
   function convertBinary(binaryString) {
     if (isBinaryNumber(binaryString)) {
-      if (binaryString.includes('.')){
+      if (binaryString.includes(".")) {
         const [integerPart, fractionalPart] = binaryString.split(".");
         const decimalInteger = parseInt(integerPart, 2);
         const decimalFractional =
@@ -36,8 +41,7 @@ const page = () => {
         setDecimal(decimal);
         setOctal(octal);
         setHexa(hexadecimal);
-      }
-      else{
+      } else {
         const decimal = parseInt(binaryString, 2);
         const octal = decimal.toString(8);
         const hexadecimal = decimal.toString(16).toUpperCase();
@@ -45,10 +49,39 @@ const page = () => {
         setOctal(octal);
         setHexa(hexadecimal);
       }
-      
     } else {
       setDecimal("Invalid number format");
       setOctal("Invalid number format");
+      setHexa("Invalid number format");
+    }
+  }
+
+  function convertOctal(octalString) {
+    if (isOctalNumber(octalString)) {
+      if (octalString.includes(".")) {
+        const [integerPart, fractionalPart] = octalString.split(".");
+        const decimalInteger = parseInt(integerPart, 8);
+        const decimalFractional =
+          parseInt(fractionalPart || "0", 8) /
+          Math.pow(8, fractionalPart.length || 1);
+        const decimal = decimalInteger + decimalFractional;
+        const binary = decimal.toString(2);
+        const hexadecimal = decimal.toString(16).toUpperCase();
+
+        setDecimal(decimal);
+        setBinary(binary);
+        setHexa(hexadecimal);
+      } else {
+        const decimal = parseInt(octalString, 8);
+        const binary = decimal.toString(2);
+        const hexadecimal = decimal.toString(16).toUpperCase();
+        setDecimal(decimal);
+        setBinary(binary);
+        setHexa(hexadecimal);
+      }
+    } else {
+      setDecimal("Invalid number format");
+      setBinary("Invalid number format");
       setHexa("Invalid number format");
     }
   }
@@ -58,6 +91,8 @@ const page = () => {
     setSearchText(value);
     if (uid === "1") {
       convertBinary(value);
+    } else if (uid === "2") {
+      convertOctal(value);
     }
   };
   if (uid === "1") {
@@ -86,8 +121,8 @@ const page = () => {
         <h1 className="head_text_2 blue_gradient">{title}</h1>
         <form className="relative w-full flex-center">
           <input
-            type={"number"}
-            placeholder={"Enter your number}"}
+            type={"text"}
+            placeholder={"Enter your number"}
             value={searchText}
             onChange={handleSearchChange}
             required
